@@ -234,28 +234,6 @@ def process_ndvi(
         if not valid_images:
             logging.warning(f"No images with acceptable cloud coverage (<{max_cloud_coverage_in_polygon:.0%}) found in interval. Skipping.")
             continue
-            
-        best_image = sorted(valid_images, key=lambda x: x['coverage'])[0]
-        image_date = best_image['date']
-        logging.info(f"--> Best image for interval found: {image_date} with {best_image['coverage']:.2%} cloud coverage in polygon.")
-        
-        # Now we process the data from the best image
-        red_band, nir_band = best_image['data']['B04.tif'], best_image['data']['B08.tif']
-        data_mask = best_image['data']['dataMask.tif']
-
-        with np.errstate(divide='ignore', invalid='ignore'):
-            ndvi_array = (nir_band.astype(float) - red_band.astype(float)) / (nir_band.astype(float) + red_band.astype(float))
-        
-        ndvi_array = np.clip(ndvi_array, -1.0, 1.0)
-        ndvi_array[np.isnan(ndvi_array)] = -999 # Value for "no data"
-        
-        valid_ndvi_pixels = ndvi_array[data_mask == 1]
-        mean_ndvi = np.mean(valid_ndvi_pixels) if valid_ndvi_pixels.size > 0 else np.nan
-        time_series_for_graph.append({'date': image_date, 'value': round(mean_ndvi, 4) if not np.isnan(mean_ndvi) else None})
-        
-        if not np.isnan(mean_ndvi):
-            fig, ax = plt.subplots(figsize=(6, 6), dpi=150)
-            ax.set_axis_off()
             masked_ndvi = np.ma.masked_where(ndvi_array == -999, ndvi_array)
             ax.imshow(masked_ndvi, cmap=cmap, norm=norm)
             png_filename = f"ndvi_map_{image_date}_{timestamp}.png"
