@@ -33,7 +33,7 @@ def serve_index():
 # Main endpoint for NDVI processing
 @app.route('/process-ndvi', methods=['POST'])
 def handle_process_ndvi():
-    # ... (tato funkce zůstává úplně stejná) ...
+    
     data = request.json
     if not data:
         logging.error("No data in request.")
@@ -135,7 +135,7 @@ def export_html_report():
 # Route for serving generated files (images)
 @app.route('/output/<filename>')
 def serve_output_file(filename):
-    # ... (tato funkce zůstává stejná) ...
+    
     if ".." in filename or filename.startswith("/"):
         return jsonify({"error": "Invalid filename"}), 400
     file_path = os.path.join(OUTPUT_FOLDER, filename)
