@@ -1,69 +1,53 @@
-# NDVI Field Analyzer 🛰️
+# Geospatial Analysis: NDVI Field Explorer 🛰️
 
-A full-stack web application for analyzing the health of agricultural fields and vegetation over time using Sentinel-2 satellite imagery. This tool provides an interactive map-based interface to calculate and visualize the Normalized Difference Vegetation Index (NDVI).
+A professional demonstration project focusing on **Remote Sensing (RS)** and **Geospatial Data Science**. This full-stack application serves as a practical implementation of satellite imagery processing, specifically designed for monitoring vegetation health (NDVI) using **Sentinel-2 L2A** (Bottom-of-Atmosphere) data.
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20App-brightgreen)](https://ndvi-field-analyzer.onrender.com) 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## About The Project
+## 🎓 Academic & Professional Context
 
-This project was built to make agricultural remote sensing accessible to everyone. Traditional GIS software can be complex and expensive. The NDVI Field Analyzer provides a simple, web-based solution for farmers, agronomists, researchers, and students to monitor vegetation health without needing specialized tools.
+This project was developed to demonstrate advanced workflows in **Geoinformatics** and **Earth Observation**. The primary goal was to bridge the gap between raw satellite data acquisition and meaningful spatio-temporal analysis through a custom-built web interface.
 
-The application allows users to draw a polygon over any area of interest on a world map and select a date range to receive a detailed and highly accurate analysis. It **intelligently filters out cloudy images by analyzing cloud cover directly inside the selected area**, ensuring the resulting data is as clean and reliable as possible.
-
----
-
-## Key Features
-
-* **Interactive Map Interface:** Uses Leaflet.js for a smooth map experience.
-* **Polygon Drawing Tool:** Users can define their exact area of interest.
-* **Advanced Cloud Detection:** Utilizes the Sentinel-2 L2A Scene Classification Layer (SCL) to precisely calculate cloud coverage **within the user-defined polygon**. This process discards images where the area of interest is obscured by clouds or their shadows, leading to much more accurate results.
-* **Reliable Time-Series Analysis:** Generates an interactive chart showing the average NDVI value over time. The analysis is highly reliable thanks to the advanced cloud filtering.
-* **Visual Map Overlays:** Displays generated NDVI maps directly on the satellite imagery.
-* **Image Slider:** Easily switch between NDVI maps from different dates.
-* **Opacity Control:** Adjust the transparency of the NDVI layer to compare it with the underlying satellite map.
-* **Find My Location:** A convenient button to quickly navigate to the user's current location.
-* **Responsive Design:** Fully functional on both desktop and mobile devices.
-* **HTML Report Export:** Users can export the complete analysis (graph and all maps) into a single, self-contained, and printable HTML file.
+### Key Analytical Concepts Implemented:
+* **Radiometric Processing:** Integration with the Copernicus Data Space Ecosystem to fetch Sentinel-2 L2A products.
+* **Vegetation Indices:** Automated calculation of the **Normalized Difference Vegetation Index (NDVI)** to assess biomass and plant vigor.
+* **Spatio-Temporal Filtering:** Advanced cloud detection using the **Scene Classification Layer (SCL)**. The algorithm performs a spatial intersection check to filter out cloudy pixels specifically within the user-defined area of interest (AOI).
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack & Skills Demonstrated
 
-This project is built with a modern, full-stack approach:
+The architecture reflects a modern **Geospatial Engineering** approach:
 
-* **Backend:**
-    * **Python 3.11**
-    * **Flask:** A lightweight web framework for the backend server and API.
-    * **Gunicorn:** A production-ready WSGI server.
-    * **SentinelHub API:** The `sentinelhub-py` library to search and download **Sentinel-2 L2A** satellite data from the Copernicus Data Space Ecosystem.
-    * **NumPy & Rasterio:** For efficient processing of satellite raster data and NDVI calculation.
-    * **Matplotlib:** For generating the time-series graph and map images.
-    * **Shapely:** For geospatial calculations like polygon area.
-
-* **Frontend:**
-    * **HTML5, CSS3, Vanilla JavaScript (ES6+)**
-    * **Leaflet.js:** An open-source library for interactive maps.
-    * **Leaflet.Draw:** A plugin for drawing polygons.
-    * **Chart.js:** For creating beautiful and interactive charts.
-
-* **Deployment:**
-    * **Render:** A cloud platform for deploying the full-stack application.
-    * **Git & GitHub:** For version control and continuous deployment.
+* **Geospatial Backend (Python 3.11):**
+    * **SentinelHub API:** Automated data retrieval from Copernicus services.
+    * **Rasterio & NumPy:** Efficient processing of multi-spectral raster arrays.
+    * **Shapely:** Geometric operations and AOI polygon processing.
+    * **Flask:** RESTful API development for geospatial data delivery.
+* **Frontend / GIS Visualization:**
+    * **Leaflet.js:** Interactive mapping and vector data handling (drawing tools).
+    * **Chart.js:** Dynamic visualization of time-series vegetation trends.
 
 ---
 
-## Getting Started
+## 🚀 Key Features
 
-To get a local copy up and running, follow these simple steps.
+* **Polygon-Based Analysis:** Allows users to define precise AOIs for targeted spatial queries.
+* **Intelligent Data Cleaning:** Automated rejection of low-quality images based on local cloud coverage within the AOI.
+* **Interactive Time-Series:** Visualizing seasonal changes in vegetation health over a selected period.
+* **Multi-Layer Visualization:** Seamless overlay of NDVI rasters with adjustable opacity over base maps.
+* **Report Generation:** Exporting analytical results into a portable HTML format for documentation.
+
+---
+
+## ⚙️ Getting Started (Local Development)
 
 ### Prerequisites
-
 * Python 3.11+
-* pip (Python package installer)
-* A free account on the [Copernicus Data Space Ecosystem](https://dataspace.copernicus.eu/) to get API credentials.
+* [Copernicus Data Space Ecosystem](https://dataspace.copernicus.eu/) credentials.
   
 ### Installation & Setup
 
