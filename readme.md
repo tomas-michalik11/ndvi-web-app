@@ -53,7 +53,7 @@ The architecture reflects a modern **Geospatial Engineering** approach:
 
 1.  **Clone the repo**
     ```sh
-    git clone [https://github.com/Frenzi11/ndvi-web-app.git](https://github.com/Frenzi11/ndvi-web-app.git)
+    git clone [https://github.com/tomas-michalik11/ndvi-web-app.git](https://github.com/tomas-michalik11/ndvi-web-app.git)
     cd ndvi-web-app
     ```
 2.  **Create a virtual environment**
